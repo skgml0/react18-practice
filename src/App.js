@@ -1,57 +1,33 @@
 import './App.css';
-import {useState, useTransition} from "react";
-import ItemList from "./ItemList";
-
-
+import React from 'react';
+// Error 발생시 fallback 실행 (보여줄 문구 또는 컴포넌트)
+// 에러 발생시 처리해주는 ErrorBoundary는 클래스형 컴포넌트로 고정, 함수형 컴포넌트로 대체할 수 없다.
+// 해당 컴포넌트 없을 시 JS문제로 인해 발생하는 에러는 전체 코드에 영향을 줌- 이용 x 
 function App() {
+   class ErrorBoundary extends React.Component{
+    state = {error: null};
+    static getDerivedStateFromError(error){
+      return {error}
+    }
+    render() {
+      const {error} = this.state;
+      if (error) {
+        return this.props.fallback;
+      }
+      return this.props.children;
+    }
+   }
+   const Child = () => {
+    throw new Error("Something Wrong...");
+   };
    
-    const [isPending, startTransition] = useTransition();
-    const [boxCount, setBoxCount] = useState();
-    const [phoneNumber, setPhoneNumber] = useState();
-    const [message, setMessage] = useState();
-
-    const handleUpdate = ({target}) => {
-        // setBoxCount(target.value.length);
-        startTransition(()=>{
-            setBoxCount(target.value.length);
-        });
-    };
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      alert(phoneNumber);
-    }
-
-    const handleChange = (event)=> {
-      // set 과 시점차이가 존재한다.
-      if (event.target.value.startsWith(0)) {
-        setMessage('good');
-        setPhoneNumber(event.target.value);
-      }else if (event.target.value.length ===0){
-        setPhoneNumber("");
-        setMessage("");
-      }
-      else{
-        setPhoneNumber('');
-        setMessage('bad');
-      }
-
-    }
   return (
-    <div className="App">
-      <h2>React18</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="phone">Phone Number:</label>
-        <br />
-        <input id="phone" onChange={handleChange} name="phone" value={phoneNumber}/>
-        <button type="submit" disabled={ phoneNumber?.length ===0 || message !== "good"}>Submit</button>     
-      </form>
-      <h3>{message}</h3>
-      <h3> {phoneNumber}</h3>
-        <input type="text" onChange={handleUpdate} />
-
-        {isPending && <h1>Pending...</h1>}
-        <ItemList items={boxCount} />
-    </div>
+    <>
+      <p>App</p>
+      <ErrorBoundary fallback={<p>There is some Error...</p>}>
+        <Child />
+      </ErrorBoundary>
+    </>
   );
 }
 
