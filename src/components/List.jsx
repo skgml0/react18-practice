@@ -11,7 +11,7 @@ function List() {
         return <li>{props.text}</li>
     }
 
-    const todoList = todos.map((todo)=><Item {...todo} />)
+    const todoList = todos.map((todo)=><Item key={todo.id} {...todo} />)
     return (
         <div>
             {todoList}
