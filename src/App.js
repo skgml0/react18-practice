@@ -1,11 +1,11 @@
 import './App.css';
 import React, { useState,useEffect } from 'react';
-import Reducer from './components/Reducer';
+import WelcomeDialog from './components/Composition/WelcomeDialog';
 function App() {
  
   return (
     <>
-    <Reducer/>
+    <WelcomeDialog/>
     </>
   );
 }
