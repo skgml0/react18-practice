@@ -15,7 +15,7 @@ function UncontrolledComponent() {
                     <input type="file" ref={fileInputRef} />
                 </label>
                 <br />
-                <button type="submit" />
+                <button type="submit">제출</button>
             </form>
         </div>
     );
