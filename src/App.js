@@ -1,11 +1,13 @@
 import './App.css';
 import React, { useState,useEffect } from 'react';
-import List from './components/List';
+import ControlledComponent from './components/Form/ControlledComponent';
+import UncontrolledComponent from './components/Form/UncontrolledComponent';
 function App() {
  
   return (
     <>
-    <List/>
+    <UncontrolledComponent/>
+    <ControlledComponent/>
     </>
   );
 }
