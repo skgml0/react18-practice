@@ -1,13 +1,11 @@
 import './App.css';
 import React, { useState,useEffect } from 'react';
-import ControlledComponent from './components/Form/ControlledComponent';
-import UncontrolledComponent from './components/Form/UncontrolledComponent';
+import Reducer from './components/Reducer';
 function App() {
  
   return (
     <>
-    <UncontrolledComponent/>
-    <ControlledComponent/>
+    <Reducer/>
     </>
   );
 }
