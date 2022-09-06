@@ -1,11 +1,11 @@
 import './App.css';
 import React, { useState,useEffect } from 'react';
-import WelcomeDialog from './components/Composition/WelcomeDialog';
+import ThankyouDialog from './components/Composition2/ThankyouDialog';
 function App() {
  
   return (
     <>
-    <WelcomeDialog/>
+    <ThankyouDialog/>
     </>
   );
 }
