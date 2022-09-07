@@ -1,11 +1,14 @@
 import './App.css';
-import React, { useState,useEffect } from 'react';
-import ThankyouDialog from './components/Composition2/ThankyouDialog';
+import React from 'react';
+import Button from './components/HOC/Button';
+import Input from './components/HOC/Input';
 function App() {
  
   return (
     <>
-    <ThankyouDialog/>
+    <Input />
+    <br />
+    <Button />
     </>
   );
 }
